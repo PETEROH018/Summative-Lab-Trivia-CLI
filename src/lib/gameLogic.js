@@ -5,7 +5,7 @@ let timeLeft = 30
 //This function handles the timing for each question.
 // It starts a timer that counts down from 30 seconds and if the time runs out, it clears the timer and exits the game by calling exitGame().
 
-export function handleTiming(questions){
+export function handleTiming(){
     const timer = setInterval(() => {
         timeLeft -= 1
         if (timeLeft <= 0) {
@@ -57,7 +57,7 @@ export function exitGame(){
 // After all questions have been answered, it displays a completion message and resets the timeLeft variable before calling the redoQuiz function to prompt the user to restart or quit the game.
 export async function startQuiz(questions) {
     for (const question of questions) {
-        const timer = handleTiming(questions)
+        const timer = handleTiming()
         const userAnswer = await handleQuestion(question)
         clearInterval(timer)
         if (userAnswer.toUpperCase() === question.answer) {
